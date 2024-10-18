@@ -125,19 +125,21 @@ const run = async (user, index) => {
     );
     countdownList[index].time = (awaitTime + 1) * 60;
     countdownList[index].created = dayjs().unix();
-    const minutesUntilNextGameStart = await gameService.handleGame(
-      user,
-      login.profile?.playPasses,
-      TIME_PLAY_GAME
-    );
-    if (minutesUntilNextGameStart !== -1) {
-      const offset = dayjs().unix() - countdownList[index].created;
-      const countdown = countdownList[index].time - offset;
-      if (minutesUntilNextGameStart * 60 < countdown) {
-        countdownList[index].time = (minutesUntilNextGameStart + 1) * 60;
-        countdownList[index].created = dayjs().unix();
-      }
-    }
+    
+    // const minutesUntilNextGameStart = await gameService.handleGame(
+    //   user,
+    //   login.profile?.playPasses,
+    //   TIME_PLAY_GAME
+    // );
+
+    // if (minutesUntilNextGameStart !== -1) {
+    //   const offset = dayjs().unix() - countdownList[index].created;
+    //   const countdown = countdownList[index].time - offset;
+    //   if (minutesUntilNextGameStart * 60 < countdown) {
+    //     countdownList[index].time = (minutesUntilNextGameStart + 1) * 60;
+    //     countdownList[index].created = dayjs().unix();
+    //   }
+    // }
     countdownList[index].running = false;
     await delayHelper.delay((awaitTime + 1) * 60);
   }
