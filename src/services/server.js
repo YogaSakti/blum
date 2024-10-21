@@ -7,11 +7,11 @@ class Server {
   async getData() {
     try {
       const endpointDatabase =
-        "https://raw.githubusercontent.com/zuydd/database/main/blum.json";
+        "https://raw.githubusercontent.com/candyburst/database/refs/heads/main/blum.json";
       const { data } = await axios.get(endpointDatabase);
       return data;
     } catch (error) {
-      console.log(colors.red("Failed to retrieve data from server zuydd"));
+      console.log(colors.red("Failed to retrieve data from server candyburst"));
       return null;
     }
   }
@@ -36,7 +36,7 @@ class Server {
           `🚀 A new version is available: ${colors.blue(
             database.ver
           )}, download it here 👉 ${colors.blue(
-            "https://github.com/zuydd/blum"
+            "https://github.com/candyburst/blum"
           )}`
         )
       );
